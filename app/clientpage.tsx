@@ -158,7 +158,9 @@ export default function AthenaAgentLandingClient() {
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
             className="w-2 h-2 bg-green-500 rounded-full"
           />
-          <span className="text-sm text-gray-300">AthenaAgent raises $2.1M and launches enterprise RL platform</span>
+          <span className="text-sm text-gray-300">
+            AthenaAgent launches enterprise RL platform for production-ready AI agents
+          </span>
           <ArrowRight className="w-4 h-4 text-gray-400" />
         </motion.div>
       </motion.div>
@@ -200,7 +202,7 @@ export default function AthenaAgentLandingClient() {
                   variant="ghost"
                   className="text-white hover:bg-white/10 font-medium px-8 py-3 text-base border border-white/20 hover:border-white/40"
                 >
-                  Book a demo <ArrowRight className="ml-2 w-4 h-4" />
+                  Contact us <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </motion.div>
             </motion.div>
@@ -312,7 +314,7 @@ export default function AthenaAgentLandingClient() {
                     variant="ghost"
                     className="text-white hover:bg-white/10 font-medium px-6 py-3 border border-white/20 hover:border-white/40"
                   >
-                    View Case Studies <ArrowRight className="ml-2 w-4 h-4" />
+                    Contact us <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </motion.div>
               </motion.div>
@@ -498,54 +500,102 @@ export default function AthenaAgentLandingClient() {
         id="about"
         className="py-32"
       >
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-6xl mx-auto px-6">
           <motion.h2
             variants={fadeInVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="text-4xl font-light mb-16"
+            className="text-4xl font-light mb-16 text-center"
           >
-            Meet the Founder
+            About Us
           </motion.h2>
+
+          <motion.div
+            variants={fadeInVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-lg text-gray-400 leading-relaxed max-w-4xl mx-auto">
+              We're AI researchers working hard to enable building world-changing AI products by securing them against
+              real risks. Our goal is to accelerate progress by solving complex security challenges to enable our
+              customers build ambitious products. If you are an ambitious techno-optimist, join us to shape the future
+              of AI products.
+            </p>
+          </motion.div>
 
           <motion.div
             variants={staggerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="space-y-8"
+            className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 max-w-4xl mx-auto"
           >
-            <motion.div
-              variants={fadeInVariants}
-              whileHover={{ scale: 1.05 }}
-              className="w-32 h-32 mx-auto rounded-full overflow-hidden border-2 border-white/10 hover:border-white/20 cursor-pointer"
-            >
-              <img src="/founder-photo.jpg" alt="Founder" className="w-full h-full object-cover" />
-            </motion.div>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <motion.div
+                variants={fadeInVariants}
+                whileHover={{ scale: 1.05 }}
+                className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-white/20 hover:border-white/30 cursor-pointer"
+              >
+                <img src="/sachin-photo.jpg" alt="Sachin Dharashivkar" className="w-full h-full object-cover" />
+              </motion.div>
 
-            <motion.div variants={fadeInVariants} className="space-y-4">
-              <h3 className="text-xl font-medium">Research Engineer</h3>
-              <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Dedicated RL research engineer specializing in reinforcement learning for real-world applications and
-                enterprise-grade AI systems.
-              </p>
-            </motion.div>
+              <motion.div variants={fadeInVariants} className="space-y-6">
+                <div>
+                  <div className="text-sm text-blue-400 font-medium tracking-wider uppercase mb-2">FOUNDER</div>
+                  <h3 className="text-2xl font-medium mb-2">Sachin Dharashivkar</h3>
+                  <p className="text-gray-400">Masters in Computer Science, UMass Amherst</p>
+                </div>
 
-            <motion.div variants={fadeInVariants} className="flex items-center justify-center space-x-8 pt-8">
-              <span className="text-gray-500 text-sm">Previously at:</span>
-              <div className="flex items-center space-x-6">
-                {["Previous Company", "Research Lab", "Tech Startup"].map((company, index) => (
-                  <motion.div
-                    key={company}
-                    whileHover={{ opacity: 1, y: -1 }}
-                    className="text-gray-400 text-sm cursor-pointer opacity-40"
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-400 mt-1">✓</span>
+                    <p className="text-gray-300 text-sm">
+                      Solving real-world problems with deep reinforcement learning agents since 2016
+                    </p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-400 mt-1">✓</span>
+                    <p className="text-gray-300 text-sm">
+                      Built simulators and agents to execute high volume equity trades at JPMorgan Chase
+                    </p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-400 mt-1">✓</span>
+                    <p className="text-gray-300 text-sm">
+                      Trained RL agents to play collaborative, multiplayer games at Unity Technologies
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4 pt-4">
+                  <motion.a
+                    href="https://www.linkedin.com/company/athenaagent/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    aria-label="LinkedIn"
                   >
-                    {company}
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                    <Linkedin className="h-5 w-5" />
+                  </motion.a>
+                  <motion.a
+                    href="https://x.com/AthenaAgentRL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    aria-label="Twitter"
+                  >
+                    <Twitter className="h-5 w-5" />
+                  </motion.a>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </motion.section>
@@ -572,13 +622,15 @@ export default function AthenaAgentLandingClient() {
 
             <div className="flex items-center space-x-6">
               {[
-                { icon: Twitter, href: "#", label: "Twitter" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: Twitter, href: "https://x.com/AthenaAgentRL", label: "Twitter" },
+                { icon: Linkedin, href: "https://www.linkedin.com/company/athenaagent/", label: "LinkedIn" },
                 { icon: Mail, href: "mailto:hello@athenaagent.com", label: "Email" },
               ].map(({ icon: Icon, href, label }, index) => (
                 <motion.a
                   key={label}
                   href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -588,9 +640,12 @@ export default function AthenaAgentLandingClient() {
                 </motion.a>
               ))}
               <motion.div whileHover={{ scale: 1.02, y: -1 }} whileTap={{ scale: 0.98 }}>
-                <Button className="bg-white text-black hover:bg-gray-100 font-medium px-6 py-2 text-sm transition-all duration-200">
+                <Button
+                  onClick={() => window.open("https://cal.com/sachdh/15min", "_blank")}
+                  className="bg-white text-black hover:bg-gray-100 font-medium px-6 py-2 text-sm transition-all duration-200"
+                >
                   <Calendar className="mr-2 h-4 w-4" />
-                  Schedule Meeting
+                  Contact us
                 </Button>
               </motion.div>
             </div>

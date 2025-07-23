@@ -1,4 +1,6 @@
+import fs from "fs"
 import path from "path"
+import matter from "gray-matter"
 
 const postsDirectory = path.join(process.cwd(), "content/blog")
 
@@ -13,49 +15,63 @@ export interface BlogPost {
 }
 
 export function getAllPosts(): BlogPost[] {
-  // In a real implementation, you'd read from the file system
-  // const fileNames = fs.readdirSync(postsDirectory)
-  // const allPostsData = fileNames.map((fileName) => {
-  //   const slug = fileName.replace(/\.md$/, '')
-  //   const fullPath = path.join(postsDirectory, fileName)
-  //   const fileContents = fs.readFileSync(fullPath, 'utf8')
-  //   const matterResult = matter(fileContents)
-  //
-  //   return {
-  //     slug,
-  //     ...matterResult.data,
-  //     content: matterResult.content
-  //   } as BlogPost
-  // })
+  try {
+    // Ensure the posts directory exists
+    if (!fs.existsSync(postsDirectory)) {
+      fs.mkdirSync(postsDirectory, { recursive: true })
+      return []
+    }
 
-  // For now, return sample data
-  return [
-    {
-      slug: "introducing-constitutional-ai",
-      title: "Introducing Constitutional AI for Better Alignment",
-      excerpt:
-        "How we're using constitutional AI principles to create more aligned and helpful AI systems through human feedback.",
-      date: "2024-01-15",
-      author: "Sarah Chen",
-      readTime: "5 min read",
-      content: "",
-    },
-  ]
+    const fileNames = fs.readdirSync(postsDirectory)
+    const allPostsData = fileNames
+      .filter((fileName) => fileName.endsWith(".md"))
+      .map((fileName) => {
+        const slug = fileName.replace(/\.md$/, "")
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, "utf8")
+        const matterResult = matter(fileContents)
+
+        return {
+          slug,
+          title: matterResult.data.title || "Untitled",
+          date: matterResult.data.date || new Date().toISOString().split("T")[0],
+          author: matterResult.data.author || "AthenaAgent Team",
+          excerpt: matterResult.data.excerpt || "No excerpt available",
+          readTime: matterResult.data.readTime || "5 min read",
+          content: matterResult.content,
+        } as BlogPost
+      })
+
+    // Sort posts by date (newest first)
+    return allPostsData.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  } catch (error) {
+    console.error("Error reading blog posts:", error)
+    return []
+  }
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
-  // In a real implementation, you'd read the specific file
-  // const fullPath = path.join(postsDirectory, `${slug}.md`)
-  // if (!fs.existsSync(fullPath)) return null
-  //
-  // const fileContents = fs.readFileSync(fullPath, 'utf8')
-  // const matterResult = matter(fileContents)
-  //
-  // return {
-  //   slug,
-  //   ...matterResult.data,
-  //   content: matterResult.content
-  // } as BlogPost
+  try {
+    const fullPath = path.join(postsDirectory, `${slug}.md`)
 
-  return null // Placeholder
+    if (!fs.existsSync(fullPath)) {
+      return null
+    }
+
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+    const matterResult = matter(fileContents)
+
+    return {
+      slug,
+      title: matterResult.data.title || "Untitled",
+      date: matterResult.data.date || new Date().toISOString().split("T")[0],
+      author: matterResult.data.author || "AthenaAgent Team",
+      excerpt: matterResult.data.excerpt || "No excerpt available",
+      readTime: matterResult.data.readTime || "5 min read",
+      content: matterResult.content,
+    } as BlogPost
+  } catch (error) {
+    console.error("Error reading blog post:", error)
+    return null
+  }
 }
