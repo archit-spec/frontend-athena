@@ -4,9 +4,9 @@
 /node_modules
 
 # next.js
-out/
+#out/
 /.next/
-/out/
+#/out/
 
 # production
 /build
