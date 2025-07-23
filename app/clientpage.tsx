@@ -201,6 +201,7 @@ export default function AthenaAgentLandingClient() {
                 <Button
                   variant="ghost"
                   className="text-white hover:bg-white/10 font-medium px-8 py-3 text-base border border-white/20 hover:border-white/40"
+                  onClick={() => window.open("https://cal.com/sachdh/15min", "_blank")}
                 >
                   Contact us <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -313,6 +314,7 @@ export default function AthenaAgentLandingClient() {
                   <Button
                     variant="ghost"
                     className="text-white hover:bg-white/10 font-medium px-6 py-3 border border-white/20 hover:border-white/40"
+                    onClick={() => window.open("https://cal.com/sachdh/15min", "_blank")}
                   >
                     Contact us <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -539,7 +541,7 @@ export default function AthenaAgentLandingClient() {
                 whileHover={{ scale: 1.05 }}
                 className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-white/20 hover:border-white/30 cursor-pointer"
               >
-                <img src="/sachin-photo.jpg" alt="Sachin Dharashivkar" className="w-full h-full object-cover" />
+                <img src="https://pbs.twimg.com/profile_images/1660878487232876544/LjtlZ44B_400x400.jpg" alt="Sachin Dharashivkar" className="w-full h-full object-cover" />
               </motion.div>
 
               <motion.div variants={fadeInVariants} className="space-y-6">
@@ -592,6 +594,17 @@ export default function AthenaAgentLandingClient() {
                     aria-label="Twitter"
                   >
                     <Twitter className="h-5 w-5" />
+                  </motion.a>
+                  <motion.a
+                    href="https://cal.com/sachdh/15min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-400 hover:text-white transition-colors duration-200"
+                    aria-label="Schedule a call"
+                  >
+                    <Calendar className="h-5 w-5" />
                   </motion.a>
                 </div>
               </motion.div>
