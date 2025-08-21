@@ -236,7 +236,7 @@ export default function AthenaAgentLandingClient() {
             animate={isSocialInView ? "visible" : "hidden"}
             className="flex items-center justify-center space-x-12"
           >
-            {["PhysicsWallah", "Enterprise Co", "Tech Startup", "AI Labs", "Research Inc"].map((company, index) => (
+            {["Enterprise Co", "Tech Startup", "AI Labs", "Research Inc"].map((company, index) => (
               <motion.div
                 key={company}
                 variants={fadeInVariants}
